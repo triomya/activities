@@ -1,0 +1,389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <title>Triomya Technologies Private Ltd</title>
+  <meta name="Generator" content="Evrsoft First Page">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+
+  <link rel="stylesheet" type="text/css" href="css/circle_path.css"><!--gears style>
+
+<SCRIPT type=text/javascript 
+src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></SCRIPT>
+<![endif]-->
+
+<script type="text/javascript" src="js/jquery.js">
+</script>
+<script type="text/javascript" src="js/jqueryui.js">
+</script><!--[if lte IE 8]>
+<SCRIPT charset=utf-8 src="js/r2d3.js"></SCRIPT>
+<![endif]--><!--[if gte IE 9]><!-->
+  <!--<![endif]-->
+
+<script type="text/javascript" src="js/jquery.corner.js">
+</script>
+<script type="text/javascript">
+	 				$(document).ready(function() {							  
+					$('#data_content').load('face.html');
+					  });
+	               function dateNow() {
+	                       return new Date().getTime();
+	               }
+
+                       function loadHtml(filename) {
+	                       $('#data_content').load(filename);
+	               }
+</script>
+<link rel="stylesheet" type="text/css" href="css/slideshow.css">
+
+<!-- SCRIPTS -->
+<script type="text/javascript" src="js/jquery-1.js"></script>
+<script type="text/javascript">
+    var jQ = jQuery.noConflict(); //call noConflict before 1st custom script
+</script>
+<script type="text/javascript" src="js/jquery2.js"></script>
+
+<script type="text/javascript">
+//see what browser the user is on for ie specific js 
+var browser = navigator.userAgent;
+//var isIpad=browser.match(/(iPad)/i);
+//var isTouch = 'ontouchstart' in document.documentElement;
+var isTouch = false;
+var android = ( navigator.userAgent.match(/(android)|(mozilla)/i) ? true : false );
+//test if user is on IE 8 or lower
+if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ //test for MSIE x.x;
+ 	var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
+ 	var isIE = (ieversion<=8) ? 1:0;
+} else {
+	var isIE = false;	
+}
+
+</script>
+
+<script type="text/javascript" src="js/slideshow.js"></script>
+</head>
+
+<body>
+
+    <div style = "position:absolute;left:5%;top:5%">
+      <table>
+        <tbody>
+          <tr>
+            <td  style = "padding: 0px 0px 0px 25px;"><img title="" alt="Triomya" src="images/triomya_logo_new.png"></td>
+
+            <td style = "padding: 0px 0px 0px 100px;"><img title="" alt="Triomya" src="images/triomya_new.png"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <script src="js/d3.v3.min.js" type="text/javascript">
+</script> <script type="text/javascript">
+
+
+var width = 1200,
+    height = 200,
+	mode = 0,
+	modei=0,
+    radius = 64,
+	
+    x = Math.sin(2 * Math.PI / 3),
+    y = Math.cos(2 * Math.PI / 3);
+
+var offset = 0,
+    speed = 2,
+    start = Date.now(),
+	start1 = start;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + 1000 + "," + 100 + ")scale(.25)")
+  .append("g");
+
+var frame = svg.append("g")
+    .datum({radius: 0});
+
+frame.append("g")
+    .attr("class", "annulus")
+    .datum({teeth: 64, radius: -radius * 4, annulus: true})
+  .append("path")
+    .attr("d", gear);
+
+frame.append("g")
+    .attr("class", "sun")
+    .datum({teeth: 32, radius: radius*2})
+  .append("path")
+    .attr("d", gear);
+
+frame.append("g")
+    .attr("class", "planet1")
+    .attr("transform", "translate(0,-" + radius * 3 + ")")
+    .datum({teeth: 16, radius: -radius })
+  .append("path")
+    .attr("d", gear);
+
+frame.append("g")
+    .attr("class", "planet2")
+    .attr("transform", "translate(" + -radius * 3 * x + "," + -radius * 3 * y + ")")
+    .datum({teeth: 16, radius: -radius })
+  .append("path")
+    .attr("d", gear);
+
+frame.append("g")
+    .attr("class", "planet3")
+    .attr("transform", "translate(" + radius * 3 * x + "," + -radius * 3 * y + ")")
+    .datum({teeth: 16, radius: -radius})
+  .append("path")
+    .attr("d", gear);
+
+d3.selectAll("input[name=reference]")
+    .data([radius * 5, Infinity, -radius])
+    .on("change", function(radius1) {
+      var radius0 = frame.datum().radius, angle = (Date.now() - start) * speed;
+      frame.datum({radius: radius1});
+      svg.attr("transform", "rotate(" + (offset += angle / radius0 - angle / radius1) + ")");
+    });
+
+d3.selectAll("input[name=speed]")
+    .on("change", function() { speed = +this.value; });
+
+function gear(d) {
+  var n = d.teeth,
+      r2 = Math.abs(d.radius),
+      r0 = r2 - 8,
+      r1 = r2 + 8,
+      r3 = d.annulus ? (r3 = r0, r0 = r1, r1 = r3, r2 + 20) : 20,
+      da = Math.PI / n,
+      a0 = -Math.PI / 2 + (d.annulus ? Math.PI / n : 0),
+      i = -1,
+      path = ["M", r0 * Math.cos(a0), ",", r0 * Math.sin(a0)];
+  while (++i < n) path.push(
+      "A", r0, ",", r0, " 0 0,1 ", r0 * Math.cos(a0 += da), ",", r0 * Math.sin(a0),
+      "L", r2 * Math.cos(a0), ",", r2 * Math.sin(a0),
+      "L", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
+      "A", r1, ",", r1, " 0 0,1 ", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
+      "L", r2 * Math.cos(a0 += da / 3), ",", r2 * Math.sin(a0),
+      "L", r0 * Math.cos(a0), ",", r0 * Math.sin(a0));
+  path.push("M0,", -r3, "A", r3, ",", r3, " 0 0,0 0,", r3, "A", r3, ",", r3, " 0 0,0 0,", -r3, "Z");
+  return path.join("");
+}
+
+d3.timer(function() {
+if((Date.now() - start1) > 20){
+frame.datum({radius: 10*radius*Math.sin(Math.PI*(50/100))});
+modei = modei +1;
+if (modei >200 && modei <=300){mode =0;}
+else if(modei > 300) { modei =0;}
+else  {mode = modei;}
+start1 = Date.now();
+	}
+  var angle = (Date.now() - start) * speed,
+      transform = function(d) { return "rotate(" + angle / d.radius + ")"; };
+  frame.selectAll("path").attr("transform", transform);
+  frame.attr("transform", transform); // frame of reference
+ 
+ 
+  
+});
+</script>
+    </div>
+
+    <div style= "padding: 0px 0px 0px 800px;">
+      <span >Follow Us now</span> <span style="COLOR: #376f83; FONT-SIZE: 12px" ><strong>@ Facebook</strong></span> <a href=
+      "http://www.facebook.com/people/Triomya-Triomya/100005981285984" target="_blank"><img title="Facebook" border="0" alt="Facebook" src="images/FaceBook_icon.png"></a> <span style=
+      "COLOR: #ff0000; FONT-SIZE: 12px" ><strong>@ Google+</strong></span> <a href="https://plus.google.com/105224608477803399731" target="_blank"><img title="Google+" border="0" alt=
+      "Google+" src="images/google_plus.png"></a> <span style="COLOR: #006300; FONT-SIZE: 12px" ><strong>@ Android Play</strong></span> <a href=
+      "https://play.google.com/store/search?q=triomya&amp;c=apps" target="_blank"><img title="Android Play" border="0" alt="Android Play" src="images/android_play.png"></a>
+    </div>
+<style type="text/css">
+.button_menu{
+border:0px solid #2a2c2f; -webkit-border-radius: 0px; -moz-border-radius: 0px;border-radius: 0px;font-size:20px;font-family:arial, helvetica, sans-serif; padding: 13px 13px 13px 13px; text-decoration:none; display:inline-block;text-shadow: -2px -2px 0 rgba(73,192,240,0.3);font-weight:bold; color: #FFFFFF;
+ background-color: #45484d; background-image: -webkit-gradient(linear, left top, left bottom, from(#45484d), to(#000000));
+ background-image: -webkit-linear-gradient(top, #45484d, #000000);
+ background-image: -moz-linear-gradient(top, #45484d, #000000);
+ background-image: -ms-linear-gradient(top, #45484d, #000000);
+ background-image: -o-linear-gradient(top, #45484d, #000000);
+ background-image: linear-gradient(to bottom, #45484d, #000000);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#45484d, endColorstr=#000000);
+}
+
+.button_menu:hover{
+border:0px solid #15aeec; -webkit-border-radius: 0px; -moz-border-radius: 0px;border-radius: 0px;font-size:20px;font-family:arial, helvetica, sans-serif; padding: 13px 13px 13px 13px; text-decoration:none; display:inline-block;text-shadow: -2px -2px 0 rgba(73,192,240,0.3);font-weight:bold; color: #000000;
+ background-color: #49c0f0; background-image: -webkit-gradient(linear, left top, left bottom, from(#49c0f0), to(#2CAFE3));
+ background-image: -webkit-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: -moz-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: -ms-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: -o-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: linear-gradient(to bottom, #49c0f0, #2CAFE3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#49c0f0, endColorstr=#2CAFE3);
+ }
+ .button_menu:hovered{
+border:0px solid #15aeec; -webkit-border-radius: 0px; -moz-border-radius: 0px;border-radius: 0px;font-size:20px;font-family:arial, helvetica, sans-serif; padding: 13px 13px 13px 13px; text-decoration:none; display:inline-block;text-shadow: -2px -2px 0 rgba(73,192,240,0.3);font-weight:bold; color: #000000;
+ background-color: #49c0f0; background-image: -webkit-gradient(linear, left top, left bottom, from(#49c0f0), to(#2CAFE3));
+ background-image: -webkit-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: -moz-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: -ms-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: -o-linear-gradient(top, #49c0f0, #2CAFE3);
+ background-image: linear-gradient(to bottom, #49c0f0, #2CAFE3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#49c0f0, endColorstr=#2CAFE3);
+ }
+</style></head>
+<div style = "position:relative;left:5%;top:5%">	
+<table width="1200" align="left" border="0px" cellpadding="0px" cellspacing="0px">
+<tr>
+           <td align ="center"  width = "100px" height = "50px" bgcolor = "#0000">
+		    <a class="button_menu" href="javascript:loadHtml('face.html')">&nbsp;&nbsp;Face&nbsp;&nbsp;</a>
+		     </td>
+			
+			<td align ="center"  width = "200px" height = "50px" bgcolor = "#0000">
+			 <a id = "Btn2" class="button_menu" href="javascript:loadHtml('business.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <script type="text/javascript">
+			
+             $("#Btn2").toggleClass("hovered");
+		
+			 </script>
+			 </a></td>
+			<td align ="center"  width = "200px" height = "50px" bgcolor = "#0000">
+			 <a class="button_menu" href="javascript:loadHtml('technology.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+			<td align ="center"  width = "200px" height = "50px" bgcolor = "#0000">
+			 <a class="button_menu" href="javascript:loadHtml('activities.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Activities&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+			<td align ="center"  width = "100px" height = "50px" bgcolor = "#0000" >
+			 <a class="button_menu" href="javascript:loadHtml('events.html')">&nbsp;Events&nbsp;</a></td>
+			<td align ="center"  width = "200px" height = "50px" bgcolor = "#0000">
+			 <a class="button_menu" href="javascript:loadHtml('order.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+			<td align ="center"  width = "200px" height = "50px" bgcolor = "#0000">
+			 <a class="button_menu" href="javascript:loadHtml('contact.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+</tr>
+</tbody>
+</table>
+	</div>
+	<!--Slide Show-->
+	
+<div style = "top:20px; position relative;" id="main_body">
+            
+
+<div id="home">
+    
+    <ul id="pagination">
+        <li class="active" title="Banner"></li>
+        <li class="" title="Intelligence"></li>
+        <li class="" title="Automation"></li>
+        <li class="" title="Life-Systems"></li>
+    </ul>
+
+            <ul style="display: none;" id="content_frame_0_rptSlides_ulSlide_2" class="featured_items intheworkplace">
+                
+                        <li id="content_frame_0_rptSlides_rptSlideElements_2_liSlideItem_0" style="width: 1076px; opacity: 0; top: -50px;" class="homeslot_1 left banner">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_2_hypLinkSlideItemLink_0" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_2_imgSlideElementImage_0" col = "color:#000000" rel="Triomya® Divisions" src="show_images/int_auto_life.png"></a>
+                        </li>
+                    
+            </ul>
+    
+            <ul style="display: none;" id="content_frame_0_rptSlides_ulSlide_0" class="featured_items forthehome">
+                
+                        <li style="opacity: 1; top: 0px;" id="content_frame_0_rptSlides_rptSlideElements_0_liSlideItem_0" class="homeslot_1 left" >
+                            <a id="content_frame_0_rptSlides_rptSlideElements_0_hypLinkSlideItemLink_0" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_0_imgSlideElementImage_0" col = "color:#000000" rel="Intelligence Drive" src="show_images/i_banner.jpg"></a>
+                        </li>
+                    
+                        <li style="opacity: 1; top: 0px;" id="content_frame_0_rptSlides_rptSlideElements_0_liSlideItem_1" class="homeslot_2 left">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_0_hypLinkSlideItemLink_1" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_0_imgSlideElementImage_1" col = "color:#000000" rel="Android Products" src="show_images/i_products.png"></a>
+                        </li>
+                    
+                        <li style="opacity: 1; top: 0px;" id="content_frame_0_rptSlides_rptSlideElements_0_liSlideItem_2" class="homeslot_3 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_0_hypLinkSlideItemLink_2" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_0_imgSlideElementImage_2" col = "color:#000000" rel="Hardware Defined Intelligence" src="show_images/i_interface.png"></a>
+                        </li>
+                    
+                        <li style="opacity: 1; top: 0px; z-index: 8; width: 428px;" id="content_frame_0_rptSlides_rptSlideElements_0_liSlideItem_3" class="homeslot_4 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_0_hypLinkSlideItemLink_3" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_0_imgSlideElementImage_3" col = "color:#000000" rel="Choice of Intelligence Platform" src="show_images/i_probanner.png"></a>
+                        </li>
+                    
+                        <li style="opacity: 1; top: 0px;" id="content_frame_0_rptSlides_rptSlideElements_0_liSlideItem_4" class="homeslot_5 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_0_hypLinkSlideItemLink_4" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_0_imgSlideElementImage_4" col = "color:#000000" rel="Models, Simulations, Prototypes and Systems" src="show_images/i_programming.png"></a>
+                        </li>
+                    
+            </ul>
+        
+            <ul style="display: none;" id="content_frame_0_rptSlides_ulSlide_1" class="featured_items forthefield">
+                
+                        <li style="opacity: 0; top: -50px;" id="content_frame_0_rptSlides_rptSlideElements_1_liSlideItem_0" class="homeslot_1 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_1_hypLinkSlideItemLink_0" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_1_imgSlideElementImage_0" col = "color:#000000" rel="Automation Power" src="show_images/a_banner.jpg"></a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px;" id="content_frame_0_rptSlides_rptSlideElements_1_liSlideItem_1" class="homeslot_2 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_1_hypLinkSlideItemLink_1" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_1_imgSlideElementImage_1" col = "color:#FFFFFF" rel="Process Control Systems" src="show_images/a_board.jpg"></a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px; z-index: 1; overflow: hidden; width: 212px; background-color: green;" id="content_frame_0_rptSlides_rptSlideElements_1_liSlideItem_2" class="homeslot_3 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_1_hypLinkSlideItemLink_2" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_1_imgSlideElementImage_2" col = "color:#FFFFFF" rel="Food Processing Automation" src="show_images/a_foodprocessing.jpg"></a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px; z-index: 1; overflow: hidden; width: 212px; background-color: green;" id="content_frame_0_rptSlides_rptSlideElements_1_liSlideItem_3" class="homeslot_4 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_1_hypLinkSlideItemLink_3" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_1_imgSlideElementImage_3" col = "color:#FFFFFF" rel="Advanced Instrumentation Processing Systems" src="show_images/a_rasp.jpg"</a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px; z-index: 1; width: 212px; background-color: green;" id="content_frame_0_rptSlides_rptSlideElements_1_liSlideItem_4" class="homeslot_5 left">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_1_hypLinkSlideItemLink_4" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_1_imgSlideElementImage_4" col = "color:#FFFFFF" rel="Green Energy Automation" src="show_images/a_solar_pp.jpg"></a>
+                        </li>
+                    
+            </ul>
+        
+
+        
+            <ul style="display: none;" id="content_frame_0_rptSlides_ulSlide_3" class="featured_items inourschools">
+                
+                        <li style="opacity: 0; top: -50px;" id="content_frame_0_rptSlides_rptSlideElements_3_liSlideItem_0" class="homeslot_1 left">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_3_hypLinkSlideItemLink_0" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_3_imgSlideElementImage_0" col = "color:#000000" rel="Life Support Systems" src="show_images/l_banner.jpg"></a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px;" id="content_frame_0_rptSlides_rptSlideElements_3_liSlideItem_1" class="homeslot_2 left">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_3_hypLinkSlideItemLink_1" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_3_imgSlideElementImage_1" col = "color:#000000" rel="Freedom Machines" src="show_images/l_home.png"></a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px;" id="content_frame_0_rptSlides_rptSlideElements_3_liSlideItem_2" class="homeslot_3 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_3_hypLinkSlideItemLink_2" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_3_imgSlideElementImage_2"  col = "color:#FFFFFF"rel="Personal Gadgets" src="show_images/l_smartphone.jpg"></a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px;" id="content_frame_0_rptSlides_rptSlideElements_3_liSlideItem_3" class="homeslot_4 right">o
+                            <a id="content_frame_0_rptSlides_rptSlideElements_3_hypLinkSlideItemLink_3" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_3_imgSlideElementImage_3" col = "color:#FF0000" rel="Bioninc Systems" src="show_images/l_biodevice.jpg"></a>
+                        </li>
+                    
+                        <li style="opacity: 0; top: -50px;" id="content_frame_0_rptSlides_rptSlideElements_3_liSlideItem_4" class="homeslot_5 right">
+                            <a id="content_frame_0_rptSlides_rptSlideElements_3_hypLinkSlideItemLink_4" href="#"><img id="content_frame_0_rptSlides_rptSlideElements_3_imgSlideElementImage_4"  col = "color:#FFFFFF"rel="Self Sustained Living Zone" src="show_images/l_solar_cooking.jpg"></a>
+                        </li>
+                    
+            </ul>
+        
+
+
+</div>
+
+            <div class="clear">
+            </div>
+
+        </div>
+	<!--Slide Show-->
+	<br>
+
+	<div id="data_content"></div>
+	
+	
+	
+	<div id="footer" style = "position:relative;left:5%;top:5%" >
+<table align="left" border="0px" cellpadding="0px" cellspacing="0px">
+<tbody>
+<tr>
+<td><a href="">SiteMap</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Media</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:loadHtml('contact.html')">Contact Us</a></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td><br>
+</td></tr>
+<tr>
+<td> 2013  Copyright . Triomya Technologies Private Limited . All Rights Reserved &nbsp;&nbsp;</td></tr></tbody></table>
+</div>
+<div></div>
+
+</body>
+</html>

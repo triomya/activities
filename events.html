@@ -1,0 +1,122 @@
+
+<body onload = "show_age()">
+
+	<div></div>
+<script type="text/javascript">
+function show_age(){
+    bdate = new Date("2012/11/30");
+    var dateTo = new Date();
+var from = {
+        d: bdate.getDate(),
+        m: bdate.getMonth(),
+        y: bdate.getFullYear()
+    };
+
+    var to = {
+        d: dateTo.getDate(),
+        m: dateTo.getMonth(),
+        y: dateTo.getFullYear()
+    };
+	var daysFebruary = to.y % 4 != 0 || (to.y % 100 == 0 && to.y % 400 != 0)? 28 : 29;
+    var daysInMonths = [0, 31, daysFebruary, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if (to.d < from.d) {
+        to.d   += daysInMonths[parseInt(to.m)];
+        from.m += 1;
+    }
+    if (to.m < from.m) {
+        to.m   += 12;
+        from.y += 1;
+    }
+	 var days =  to.d - from.d;
+       var  months = to.m - from.m;
+        var years = to.y - from.y;
+    
+   document.getElementById("TriomyaLife").innerHTML = "<strong> Our Life-Time :</strong><span>"+ years + " years, "+months+" months, "+days+" days </span>";
+   }
+</script>
+<style media="screen" type="text/css">
+
+  pre { display: inline-block; width: auto; }
+  table.t_data
+{
+    border: #080 1px solid;; /*- **EDITED** - doesn't seem like influences here */
+	
+    background-color: #080;
+    border-spacing: 1px;
+    /*margin: 0 auto 0 auto;*/
+	border-collapse:collapse;
+}
+table.t_data thead th, table.t_data thead td
+{
+border: #080 1px solid;
+    background-color: #9f9;
+    /* border: #080 0px solid; - **EDITED** - doesn't seem like influences here */
+    padding: 5px;
+    margin: 1px;
+}
+table.t_data tbody th, table.t_data tbody td
+{
+border: #080 1px solid;
+    background-color: #fff;
+    /* border: #080 0px solid; - **EDITED** - doesn't seem like influences here */
+    padding: 2px;
+}
+</style>
+
+
+    <div style="POSITION: relative; TOP: 5%; LEFT: 25%">
+      <img src="images/events_website.png"><br><br><br><br>
+      
+    </div>
+	<div id = "TriomyaLife" style="POSITION: relative; LEFT: 65%">
+</div>
+    <div style="POSITION: relative; TOP: 5%; LEFT: 5%">
+	<table class="t_data">
+    <thead style="padding:1px">
+	
+	<tr> <!--width 1040-->
+	<th width = 100 align="center"><strong>Event No.</strong></th>
+	<th width = 345 align="center"><strong>Event Logo</strong></th>
+	<th width = 345 align="center"><strong>Event Name</strong></th>
+	<th width = 150 align="center"><strong>Date</strong></th>
+	<th width = 100 align="center"><strong>Event</strong><br><strong>Head Count</strong></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td align="center"><span>1</span></td>
+	<td align="center"><img src="images/triomya_logo_new.png"></td>
+	<td align="center"><span>Incorporation</span></td>
+	<td align="center"><span>30th, Nov 2012</span></td>
+	<td align="center"><span>4</span></td>
+	</tr>
+	<tr>
+	<td align="center"><span>2</span></td>
+	<td align="center"><img src="images/omplayer.png"></td>
+	<td align="center"><span>Release of our first<br>Android App:Om Player</span><br><p style="TEXT-ALIGN: center"><a href ="https://play.google.com/store/apps/details?id=com.triomya.musicplayer">Play Store Link</a></p></td>
+	<td align="center"><span>18th Jul 2013</span></td>
+	<td align="center"><span>4</span></td>
+	</tr>
+	<tr>
+	<td align="center"><span>3</span></td>
+	<td align="center"><img src="images/pdfprivate.png"></td>
+	<td align="center"><span>Android App:PDF Private<br>Released</span><br><p style="TEXT-ALIGN: center"><a href = "https://play.google.com/store/apps/details?id=com.triomya.utilitypdf">Play Store Link</a></p></td>
+	<td align="center"><span>10th, Sep 2013</span></td>
+	<td align="center"><span>4</span></td>
+	</tr>
+		<tr>
+	<td align="center"><span>4</span></td>
+	<td align="center"><img src="images/sym.png"></td>
+	<td align="center"><span>Android App:ShowYourMusic<br>Released</span><br><p style="TEXT-ALIGN: center"><a href = "https://play.google.com/store/apps/details?id=com.triomya.showyourmusic">Play Store Link</a></p></td>
+	<td align="center"><span>23rd, Apr 2014</span></td>
+	<td align="center"><span>4</span></td>
+	</tr>
+	</tbody>
+	</table>
+	</div>
+
+</body>
+
+
+

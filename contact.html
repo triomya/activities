@@ -1,0 +1,212 @@
+<div>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css" onload='timerTick()'>   
+ 
+      #container1 {
+	    
+        height: 250px;
+        vertical-align: middle;
+        width: 250px;
+      }
+      #clock1 {
+        
+        stroke: #000000;
+		stroke-width: 0.5px;
+        stroke-linecap: round;
+		
+      }
+      #surface, #h_pointer1 {
+        stroke-width: 3px;
+      }
+      #delimiters, #s_pointer1 {
+        stroke-width: 1px;
+      }
+      #m_pointer1 {
+        stroke-width: 2px;
+      }
+      #numbers1 {
+        font-family: sans-serif;
+        font-size: 70%;
+      }
+	        #container2 {
+	  
+        height: 250px;
+        vertical-align: middle;
+        width: 250px;
+      }
+      #clock2 {
+
+  
+        stroke: #000000;
+		stroke-width: 0.5px;
+        stroke-linecap: round;
+		
+      }
+      #surface, #h_pointer2 {
+        stroke-width: 3px;
+      }
+      #delimiters, #s_pointer2 {
+        stroke-width: 1px;
+      }
+      #m_pointer2 {
+        stroke-width: 2px;
+      }
+      #numbers2 {
+        font-family: sans-serif;
+        font-size: 70%;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+	   
+      function timerTick() {
+	  
+        with (new Date()) {
+	  
+	  	
+          var h, m, s;
+		  var h1,m1,s1;
+        
+	  	  
+          h = 30 * ((getHours() % 12) + getMinutes() / 60);
+          m = 6 * getMinutes();
+          s = 6 * getSeconds();
+
+  		var   ampm2 = getHours() >= 12 ? 'pm' : 'am';
+
+		  
+          document.getElementById('h_pointer2').setAttribute('transform', 'rotate(' + h + ', 50, 50)');
+          document.getElementById('m_pointer2').setAttribute('transform', 'rotate(' + m + ', 50, 50)'); 
+          document.getElementById('s_pointer2').setAttribute('transform', 'rotate(' + s + ', 50, 50)');
+document.getElementById('AMPMinfo2').innerHTML = ampm2;
+   var  utc = getTime() + (getTimezoneOffset() * 60000);
+   var offset = '-1.5';
+    // create new Date object for different city
+    // using supplied offset
+    nd = new Date(utc+ (3600000*offset));
+   
+    // return time as a string
+    
+	        h1 = 30 * ((nd.getHours() % 12) + nd.getMinutes() / 60);
+          m1 = 6 * nd.getMinutes();
+          s1 = 6 * nd.getSeconds();
+var   ampm1 = nd.getHours() >= 12 ? 'pm' : 'am';
+		  
+          document.getElementById('h_pointer1').setAttribute('transform', 'rotate(' + h1 + ', 50, 50)');
+          document.getElementById('m_pointer1').setAttribute('transform', 'rotate(' + m1+ ', 50, 50)'); 
+          document.getElementById('s_pointer1').setAttribute('transform', 'rotate(' + s1 + ', 50, 50)');
+		  document.getElementById('AMPMinfo1').innerHTML = ampm1;
+          setTimeout(timerTick, 1000);
+        }
+      }
+    </script> 
+<div style="POSITION: relative; TOP: 5%; LEFT: 5%">
+<table>
+<tbody>
+<tr>
+<td colspan = "2" align = "left">
+<h2><span style="font-size: 12px"><font size="5">Registered Office:</font></span></h2>
+<p><font face="Arial" size="3"><span>#189, Bazaar Street, </span></font></p>
+<p><font face="Arial" size="3"><span>Chidambaram,</span></font></p>
+<p><font face="Arial" size="3"><span>Cuddalore District,</span></font></p>
+<p><font face="Arial" size="3"><span>TamilNadu,India - 608001</span></font></p>
+<p><font face="Arial" size="3"><span>Ph:+91-04144-225882</span></font></p>
+<br><br>
+</td>
+
+<td rowspan="4" align="center" valign="top" width="550">
+<iframe src="https://mapsengine.google.com/map/embed?mid=zwZRjTlFgEuw.kRbR1sQAnhhw" height="480" width="480"></iframe>
+</td>
+</tr>
+<tr>
+<td align = "center"><h2><span style="font-size: 12px"><font size="5">Our Time Now</font></span></h2></td>
+<td align = "center"><h2><span style="font-size: 12px"><font size="5">Your Time Now</font></span></h2></td>
+</tr>
+<tr>
+<td id = "container1" align="center"  style="background:url(images/clock_worktime.png) no-repeat;">
+<svg id='clock2' viewBox='0 0 100 100' width='200' height='200'>
+		      <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);
+      stop-opacity:0" />
+      <stop offset="100%" style="stop-color:rgb(255,128,0);stop-opacity:1" />
+    </radialGradient>
+            <circle id='surface1' cx='50' cy='50' r='45' stroke-width = "5" fill="url(#grad1)"/>
+            <g id='pointers1'>
+              <line id='h_pointer1' x1='50' y1='50' x2='50' y2='27' />
+              <line id='m_pointer1' x1='50' y1='50' x2='50' y2='17' />
+              <line id='s_pointer1' x1='50' y1='50' x2='50' y2='13' />
+            </g>
+            <g id='numbers1'>
+              <text x='43' y='18'>12</text>
+              <text x='85' y='54'>3</text>
+              <text x='47' y='91'>6</text>
+              <text x='9' y='54'>9</text>
+			  <text x='14' y='36'>10</text>
+			  <text x='27' y='22'>11</text>
+			    <text x='67' y='22'>1</text>
+			  <text x='80' y='36'>2</text>
+			     <text x='80' y='72'>4</text>
+			  <text x='67' y='86'>5</text>
+			     <text x='27' y='86'>7</text>
+			  <text x='14' y='72'>8</text>
+			  <text id = "AMPMinfo1" x='47' y='70'></text>
+            </g>
+          </svg>
+</td>
+<td id = "container2" align="center">
+
+<svg id='clock2' viewBox='0 0 100 100' width='200' height='200'>
+		      <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);
+      stop-opacity:0" />
+      <stop offset="100%" style="stop-color:rgb(255,128,0);stop-opacity:1" />
+    </radialGradient>
+            <circle id='surface2' cx='50' cy='50' r='45' stroke-width = "5" fill="url(#grad1)"/>
+            <g id='pointers2'>
+              <line id='h_pointer2' x1='50' y1='50' x2='50' y2='27' />
+              <line id='m_pointer2' x1='50' y1='50' x2='50' y2='17' />
+              <line id='s_pointer2' x1='50' y1='50' x2='50' y2='13' />
+            </g>
+            <g id='numbers2'>
+              <text x='43' y='18'>12</text>
+              <text x='85' y='54'>3</text>
+              <text x='47' y='91'>6</text>
+              <text x='9' y='54'>9</text>
+			  <text x='14' y='36'>10</text>
+			  <text x='27' y='22'>11</text>
+			    <text x='67' y='22'>1</text>
+			  <text x='80' y='36'>2</text>
+			     <text x='80' y='72'>4</text>
+			  <text x='67' y='86'>5</text>
+			     <text x='27' y='86'>7</text>
+			  <text x='14' y='72'>8</text>
+			 <text id = "AMPMinfo2" x='47' y='70'></text>
+            </g>
+          </svg>
+</td>
+</tr >
+<tr>
+<td colspan = "3"><font face="Arial" size="3"><strong>Office Hours:</strong></font>
+<font face="Arial" size="3"><span>10.00 AM to 6.00 PM (IST)</span></font>
+</td>
+</tr>
+<tr>
+<td colspan="3" height = 20 bgcolor = "#D8D8D8" ></td>
+<tr>
+<tr> 
+<td colspan="3" align = "left">
+<h2><span style="font-size: 12px"><font size="5">Write to Us:</font></span></h2>
+<form name="htmlform" method="post" action="mailsent.php">
+<br>
+<input name="subject" value="Business" type="radio">Business
+<input name="subject" value="Technology" type="radio">Technology
+<input name="subject" value="Order" type="radio">Order
+<input name="subject" value="Support" type="radio">Support
+<input name="subject" value="Feedback" type="radio">Feedback<br><br>
+<label for="first_name">First Name *</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="first_name" maxlength="50" size="30" type="text"> <br><br>
+<label for="last_name">Last Name *</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="last_name" maxlength="50" size="30" type="text"> <br><br>
+<label for="email">Email Address *</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="email" maxlength="80" size="30" type="text"> <br><br>
+<label for="telephone">Telephone Number</label>&nbsp;&nbsp;<input name="telephone" maxlength="30" size="30" type="text"> <br><br>
+<label for="comments">Enquiry *</label><br><textarea name="comments" maxlength="1000" cols="25" rows="6"></textarea> <br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="Submit" valign="middle" type="submit"> </form></td></tr></tbody></table></div>
+</div>
