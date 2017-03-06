@@ -1,0 +1,20 @@
+table.t_data
+{
+    /* border: 1px; - **EDITED** - doesn't seem like influences here */
+    background-color: #080;
+    border-spacing: 1px;
+    margin: 0 auto 0 auto;
+}
+table.t_data thead th, table.t_data thead td
+{
+    background-color: #9f9;
+    /* border: #080 0px solid; - **EDITED** - doesn't seem like influences here */
+    padding: 5px;
+    margin: 1px;
+}
+table.t_data tbody th, table.t_data tbody td
+{
+    background-color: #fff;
+    /* border: #080 0px solid; - **EDITED** - doesn't seem like influences here */
+    padding: 2px;
+}

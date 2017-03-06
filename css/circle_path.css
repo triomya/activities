@@ -1,0 +1,23 @@
+path {
+  fill-rule: evenodd;
+  stroke: #333;
+  stroke-width: 2px;
+}
+
+.sun path {
+  fill: #6e6e6e;
+}
+
+.planet1 path {
+  fill: #1c1c1c;
+}
+.planet2 path {
+ fill: #ff4000;
+}
+.planet3 path { 
+ fill: #bfff00;
+}
+
+.annulus path {
+  fill: #fafafa;
+}
